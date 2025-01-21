@@ -35,6 +35,7 @@ This package includes several predefined validators:
 - `ArrayOptions`: Ensures the values (array) is within a defined array. ([Example](#arrayoptions))
 - `Required`: Ensures the value is not blank or `nil`.
 - `RegularExpression`: Ensures the value match regular expression. ([Example](#regularexpression))
+- `Date`: Ensures the value is valid date. ([Example](#date))
 
 ## Examples
 
@@ -106,4 +107,21 @@ con := constraints.ArrayOptions{
 	
 values := []any{"Red", "Green", 100}
 errs := validator.Validate(values, con)
+```
+
+### Date
+
+```go
+dateFormat := "2006-01-02"
+minDate, _ := time.Parse(dateFormat, "2023-01-01")
+maxDate, _ := time.Parse(dateFormat, "2023-12-31")
+
+con := constraints.Date{
+    Min:    minDate,
+    Max:    maxDate,
+    Format: dateFormat,
+}
+
+value := "01-05-2023"
+errs := validator.Validate(value, con)
 ```
