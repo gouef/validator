@@ -33,6 +33,12 @@ func TestValidate(t *testing.T) {
 			expectErr:   false,
 		},
 		{
+			name:        "Valid (Multiple) NotBlank and IsFalse constraint",
+			value:       false,
+			constraints: []validator.Constraint{constraints.NotBlank{}, constraints.IsFalse{}},
+			expectErr:   false,
+		},
+		{
 			name:        "Invalid NotBlank constraint",
 			value:       "",
 			constraints: []validator.Constraint{constraints.NotBlank{}},

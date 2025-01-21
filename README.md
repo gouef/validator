@@ -59,6 +59,17 @@ func main() {
 	} else {
 		fmt.Println("Value is within the allowed range.")
 	}
+	
+	// Example multiple constrains
+	errs := validator.Validate("test@example.com", constraints.NotBlank{}, constraints.Email{})
+	
+	if len(errs) > 0 {
+		for _, err := range errs {
+			fmt.Println("Error: ", err)
+		}
+	} else {
+		fmt.Println("Value is valid.")
+	}
 }
 
 ```
