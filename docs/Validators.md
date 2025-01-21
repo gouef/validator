@@ -30,6 +30,7 @@ This package includes several predefined validators:
 - `Language`: Ensures the value is a valid language code without a region (e.g., `en`).
 - `LanguageWithRegion`: Ensures the value is a valid language code with a region (e.g., `en-US`).
 - `RangeConstraint`: Ensures the value is within a defined range (e.g., a number between `min` and `max`). It support int and float.
+- `ArrayRangeConstraint`: Ensures the value is within a defined array range (e.g., a number between `min` and `max`). It support int and float.
 - `Required`: Ensures the value is not blank or `nil`.
 - `RegularExpression`: Ensures the value match regular expression.
 
@@ -52,6 +53,32 @@ regExp := `^[a-z]{3}$`
 con := constraints.RegularExpression{
     Regexp: regExp,
 }
+
+errs := validator.Validate(value, con)
+```
+
+### Range
+
+```go
+con := constrains.Range{
+	Min: 5,
+	Max: 20,
+}
+
+value := 7
+
+errs := validator.Validate(value, con)
+```
+
+### ArrayRange
+
+```go
+con := constrains.ArrayRange{
+	Min: 5,
+	Max: 20,
+}
+
+value := []any{5, 15, 19}
 
 errs := validator.Validate(value, con)
 ```
