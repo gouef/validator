@@ -119,6 +119,7 @@ This package includes several predefined validators:
 - `IsBool`: Ensures the value is a boolean (`true` or `false`).
 - `Currency`: Ensures the value is a valid currency code.
 - `Email`: Ensures the value is a valid email address.
+- `Language`: Ensures the value is a valid language code without a region (e.g., `en`).
 - `LanguageWithRegion`: Ensures the value is a valid language code with a region (e.g., `en-US`).
 - `RangeConstraint`: Ensures the value is within a defined range (e.g., a number between `min` and `max`).
 - `Required`: Ensures the value is not blank or `nil`.
