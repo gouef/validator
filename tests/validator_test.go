@@ -45,6 +45,30 @@ func TestValidate(t *testing.T) {
 			expectErr:   true,
 		},
 		{
+			name:        "Valid Nil constraint",
+			value:       nil,
+			constraints: []validator.Constraint{constraints.Nil{}},
+			expectErr:   false,
+		},
+		{
+			name:        "Invalid Nil constraint",
+			value:       true,
+			constraints: []validator.Constraint{constraints.Nil{}},
+			expectErr:   true,
+		},
+		{
+			name:        "Valid NotNil constraint",
+			value:       7,
+			constraints: []validator.Constraint{constraints.NotNil{}},
+			expectErr:   false,
+		},
+		{
+			name:        "Invalid NotNil constraint",
+			value:       nil,
+			constraints: []validator.Constraint{constraints.NotNil{}},
+			expectErr:   true,
+		},
+		{
 			name:        "Valid IsFalse constraint",
 			value:       false,
 			constraints: []validator.Constraint{constraints.IsFalse{}},
@@ -179,6 +203,18 @@ func TestValidate(t *testing.T) {
 		{
 			name:        "Valid Range constraint",
 			value:       5,
+			constraints: []validator.Constraint{constraints.RangeConstraint{Min: 1, Max: 10}},
+			expectErr:   false,
+		},
+		{
+			name:        "Valid Range constraint (float32)",
+			value:       float32(5),
+			constraints: []validator.Constraint{constraints.RangeConstraint{Min: 1, Max: 10}},
+			expectErr:   false,
+		},
+		{
+			name:        "Valid Range constraint (float64)",
+			value:       float64(5),
 			constraints: []validator.Constraint{constraints.RangeConstraint{Min: 1, Max: 10}},
 			expectErr:   false,
 		},
