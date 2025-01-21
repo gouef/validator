@@ -8,7 +8,7 @@ import (
 )
 
 func TestArrayRangeValidator(t *testing.T) {
-	validatorConstrain := constraints.ArrayRange{
+	validatorConstrain := constraints.ArrayRangeConstraint{
 		Min: 10,
 		Max: 20,
 	}
@@ -20,37 +20,37 @@ func TestArrayRangeValidator(t *testing.T) {
 		expectErr   bool
 	}{
 		{
-			name:        "Valid ArrayRange constraint",
+			name:        "Valid ArrayRangeConstraint constraint",
 			value:       []any{10, 15, 20},
 			constraints: []validator.Constraint{validatorConstrain},
 			expectErr:   false,
 		},
 		{
-			name:        "Valid ArrayRange constraint (float)",
+			name:        "Valid ArrayRangeConstraint constraint (float)",
 			value:       []any{float32(10), float64(15), 20},
 			constraints: []validator.Constraint{validatorConstrain},
 			expectErr:   false,
 		},
 		{
-			name:        "Valid ArrayRange constraint (empty)",
+			name:        "Valid ArrayRangeConstraint constraint (empty)",
 			value:       []any{},
 			constraints: []validator.Constraint{validatorConstrain},
 			expectErr:   false,
 		},
 		{
-			name:        "Invalid ArrayRange constraint (out of range)",
+			name:        "Invalid ArrayRangeConstraint constraint (out of range)",
 			value:       []any{5, 15, 25},
 			constraints: []validator.Constraint{validatorConstrain},
 			expectErr:   true,
 		},
 		{
-			name:        "Invalid ArrayRange constraint (mixed and invalid)",
+			name:        "Invalid ArrayRangeConstraint constraint (mixed and invalid)",
 			value:       []any{10, "invalid", 15},
 			constraints: []validator.Constraint{validatorConstrain},
 			expectErr:   true,
 		},
 		{
-			name:        "Invalid ArrayRange constraint (not array)",
+			name:        "Invalid ArrayRangeConstraint constraint (not array)",
 			value:       "abc",
 			constraints: []validator.Constraint{validatorConstrain},
 			expectErr:   true,

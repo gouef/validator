@@ -5,12 +5,12 @@ import (
 	"fmt"
 )
 
-type ArrayRangeConstraint struct {
+type ArrayRange struct {
 	Min float64
 	Max float64
 }
 
-func (c ArrayRangeConstraint) Validate(value any) error {
+func (c ArrayRange) Validate(value any) error {
 	slice, ok := value.([]any)
 	if !ok {
 		return errors.New("this value must be an array or slice")
