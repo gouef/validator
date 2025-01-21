@@ -24,15 +24,17 @@ This package includes several predefined validators:
 - `IsStruct`: Ensures the value is `struct`.
 - `IsFalse`: Ensures the value is `false`.
 - `IsBool`: Ensures the value is a boolean (`true` or `false`).
-- `Struct`: Ensures the value is `struct` of type ``.
+- `Struct`: Ensures the value is `struct` of type ``. ([Example](#struct))
 - `Currency`: Ensures the value is a valid currency code.
 - `Email`: Ensures the value is a valid email address.
 - `Language`: Ensures the value is a valid language code without a region (e.g., `en`).
 - `LanguageWithRegion`: Ensures the value is a valid language code with a region (e.g., `en-US`).
-- `RangeConstraint`: Ensures the value is within a defined range (e.g., a number between `min` and `max`). It support int and float.
-- `ArrayRangeConstraint`: Ensures the value is within a defined array range (e.g., a number between `min` and `max`). It support int and float.
+- `RangeConstraint`: Ensures the value is within a defined range (e.g., a number between `min` and `max`). It support int and float. ([Example](#range))
+- `ArrayRange`: Ensures the value is within a defined array range (e.g., a number between `min` and `max`). It support int and float. ([Example](#arrayrange))
+- `Options`: Ensures the value is within a defined array. ([Example](#options))
+- `ArrayOptions`: Ensures the values (array) is within a defined array. ([Example](#arrayoptions))
 - `Required`: Ensures the value is not blank or `nil`.
-- `RegularExpression`: Ensures the value match regular expression.
+- `RegularExpression`: Ensures the value match regular expression. ([Example](#regularexpression))
 
 ## Examples
 
@@ -81,4 +83,27 @@ con := constrains.ArrayRange{
 value := []any{5, 15, 19}
 
 errs := validator.Validate(value, con)
+```
+
+### Options
+
+```go
+con := constraints.Options{
+		Options: []any{"option1", "option2", "option3", 42},
+	}
+
+value := "option1"
+
+errs := validator.Validate(value, con)
+```
+
+### ArrayOptions
+
+```go
+con := constraints.ArrayOptions{
+		Options: []any{"Red", "Green", "Blue", 100},
+	}
+	
+values := []any{"Red", "Green", 100}
+errs := validator.Validate(values, con)
 ```
