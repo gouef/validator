@@ -29,7 +29,7 @@ This package includes several predefined validators:
 - `Email`: Ensures the value is a valid email address.
 - `Language`: Ensures the value is a valid language code without a region (e.g., `en`).
 - `LanguageWithRegion`: Ensures the value is a valid language code with a region (e.g., `en-US`).
-- `RangeConstraint`: Ensures the value is within a defined range (e.g., a number between `min` and `max`). It support int and float. ([Example](#range))
+- `Range`: Ensures the value is within a defined range (e.g., a number between `min` and `max`). It support int and float. ([Example](#range))
 - `ArrayRange`: Ensures the value is within a defined array range (e.g., a number between `min` and `max`). It support int and float. ([Example](#arrayrange))
 - `Options`: Ensures the value is within a defined array. ([Example](#options))
 - `ArrayOptions`: Ensures the values (array) is within a defined array. ([Example](#arrayoptions))

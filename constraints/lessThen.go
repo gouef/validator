@@ -5,12 +5,11 @@ import (
 	"fmt"
 )
 
-type Range struct {
-	Min float64
-	Max float64
+type LessThen struct {
+	Value float64
 }
 
-func (r Range) Validate(value any) error {
+func (r LessThen) Validate(value any) error {
 	var num float64
 
 	switch v := value.(type) {
@@ -24,8 +23,8 @@ func (r Range) Validate(value any) error {
 		return errors.New("this value must be an integer or float")
 	}
 
-	if num < r.Min || num > r.Max {
-		return fmt.Errorf("this value must be between %.2f and %.2f", r.Min, r.Max)
+	if num >= r.Value {
+		return fmt.Errorf("this value (%.2f) must be less then %.2f", num, r.Value)
 	}
 
 	return nil

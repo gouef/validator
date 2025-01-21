@@ -203,31 +203,31 @@ func TestValidate(t *testing.T) {
 		{
 			name:        "Valid Range constraint",
 			value:       5,
-			constraints: []validator.Constraint{constraints.RangeConstraint{Min: 1, Max: 10}},
+			constraints: []validator.Constraint{constraints.Range{Min: 1, Max: 10}},
 			expectErr:   false,
 		},
 		{
 			name:        "Valid Range constraint (float32)",
 			value:       float32(5),
-			constraints: []validator.Constraint{constraints.RangeConstraint{Min: 1, Max: 10}},
+			constraints: []validator.Constraint{constraints.Range{Min: 1, Max: 10}},
 			expectErr:   false,
 		},
 		{
 			name:        "Valid Range constraint (float64)",
 			value:       float64(5),
-			constraints: []validator.Constraint{constraints.RangeConstraint{Min: 1, Max: 10}},
+			constraints: []validator.Constraint{constraints.Range{Min: 1, Max: 10}},
 			expectErr:   false,
 		},
 		{
 			name:        "Invalid Range constraint",
 			value:       15,
-			constraints: []validator.Constraint{constraints.RangeConstraint{Min: 1, Max: 10}},
+			constraints: []validator.Constraint{constraints.Range{Min: 1, Max: 10}},
 			expectErr:   true,
 		},
 		{
 			name:        "Invalid Range constraint as type",
 			value:       "15",
-			constraints: []validator.Constraint{constraints.RangeConstraint{Min: 1, Max: 10}},
+			constraints: []validator.Constraint{constraints.Range{Min: 1, Max: 10}},
 			expectErr:   true,
 		},
 		{
