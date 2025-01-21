@@ -7,10 +7,13 @@ import (
 	"testing"
 )
 
-func TestArrayRangeValidator(t *testing.T) {
-	validatorConstrain := constraints.ArrayRangeConstraint{
-		Min: 10,
-		Max: 20,
+func TestOptionsValidator(t *testing.T) {
+	validatorConstrain := constraints.Options{
+		Options: []any{"option1", "option2", "option3", 42},
+	}
+
+	arrayValidatorConstrain := constraints.ArrayOptions{
+		Options: []any{"Red", "Green", "Blue", 100},
 	}
 
 	tests := []struct {
@@ -20,39 +23,63 @@ func TestArrayRangeValidator(t *testing.T) {
 		expectErr   bool
 	}{
 		{
-			name:        "Valid ArrayRangeConstraint constraint",
-			value:       []any{10, 15, 20},
+			name:        "Valid Options constraint",
+			value:       "option1",
 			constraints: []validator.Constraint{validatorConstrain},
 			expectErr:   false,
 		},
 		{
-			name:        "Valid ArrayRangeConstraint constraint (float)",
-			value:       []any{float32(10), float64(15), 20},
+			name:        "Valid Options constraint (int)",
+			value:       42,
 			constraints: []validator.Constraint{validatorConstrain},
 			expectErr:   false,
 		},
 		{
-			name:        "Valid ArrayRangeConstraint constraint (empty)",
+			name:        "Invalid Options constraint (invalid)",
+			value:       "invalid",
+			constraints: []validator.Constraint{validatorConstrain},
+			expectErr:   true,
+		},
+		{
+			name:        "Invalid Options constraint (empty)",
+			value:       "",
+			constraints: []validator.Constraint{validatorConstrain},
+			expectErr:   true,
+		},
+		{
+			name:        "Invalid Options constraint (nil)",
+			value:       nil,
+			constraints: []validator.Constraint{validatorConstrain},
+			expectErr:   true,
+		},
+		{
+			name:        "Valid ArrayOptions constraint",
+			value:       []any{"Red", "Green", 100},
+			constraints: []validator.Constraint{arrayValidatorConstrain},
+			expectErr:   false,
+		},
+		{
+			name:        "Valid ArrayOptions constraint (empty)",
 			value:       []any{},
-			constraints: []validator.Constraint{validatorConstrain},
+			constraints: []validator.Constraint{arrayValidatorConstrain},
 			expectErr:   false,
 		},
 		{
-			name:        "Invalid ArrayRangeConstraint constraint (out of range)",
-			value:       []any{5, 15, 25},
-			constraints: []validator.Constraint{validatorConstrain},
+			name:        "Invalid ArrayOptions constraint (one element)",
+			value:       []any{"Red", "Yellow"},
+			constraints: []validator.Constraint{arrayValidatorConstrain},
 			expectErr:   true,
 		},
 		{
-			name:        "Invalid ArrayRangeConstraint constraint (mixed and invalid)",
-			value:       []any{10, "invalid", 15},
-			constraints: []validator.Constraint{validatorConstrain},
+			name:        "Invalid ArrayOptions constraint (multiple elements)",
+			value:       []any{"Yellow", "Purple"},
+			constraints: []validator.Constraint{arrayValidatorConstrain},
 			expectErr:   true,
 		},
 		{
-			name:        "Invalid ArrayRangeConstraint constraint (not array)",
-			value:       "abc",
-			constraints: []validator.Constraint{validatorConstrain},
+			name:        "Invalid ArrayOptions constraint (not array)",
+			value:       nil,
+			constraints: []validator.Constraint{arrayValidatorConstrain},
 			expectErr:   true,
 		},
 	}
