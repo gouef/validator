@@ -42,6 +42,7 @@ This package includes several predefined validators:
 - `RegularExpression`: Ensures the value match regular expression. ([Example](#regularexpression))
 - `Date`: Ensures the value is valid date. ([Example](#date))
 - `Url`: Ensures the value is valid url. ([Example](#url))
+- `Length`: Ensure the value has length. ([Example](#length))
 
 ## Examples
 
@@ -141,6 +142,29 @@ v := constraints.Url{
 }
 
 value := "https://example.com"
+errs := validator.Validate(value, v)
+```
+
+### Length
+
+#### Map
+```go
+v := constraints.Url{
+    Max: 4,
+}
+
+value := map[string]int{"a": 1, "b": 2, "c": 3}
+errs := validator.Validate(value, v)
+```
+
+#### String
+
+```go
+v := constraints.Url{
+    Min: 3,
+}
+
+value := "hello"
 errs := validator.Validate(value, v)
 ```
 
