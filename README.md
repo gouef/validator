@@ -124,7 +124,7 @@ This package includes several predefined validators:
 - `Range`: Ensures the value is within a defined range (e.g., a number between `min` and `max`).
 - `Required`: Ensures the value is not blank or `nil`.
 
-More at [documentation](./docs/Validators.md)
+Full list More at [documentation](./docs/Validators.md)
 
 ### Configuration Options
 

@@ -31,6 +31,11 @@ This package includes several predefined validators:
 - `LanguageWithRegion`: Ensures the value is a valid language code with a region (e.g., `en-US`).
 - `Range`: Ensures the value is within a defined range (e.g., a number between `min` and `max`). It support int and float. ([Example](#range))
 - `ArrayRange`: Ensures the value is within a defined array range (e.g., a number between `min` and `max`). It support int and float. ([Example](#arrayrange))
+- `EqualTo`: Ensures the value is equal to.
+- `GreaterOrEqual`: Ensures the value is greater or equal. (support int, float)
+- `GreaterThen`: Ensures the value is greater. (support int, float)
+- `LessOrEqual`: Ensures the value is less or equal. (support int, float)
+- `LessThen`: Ensures the value is less then. (support int, float)
 - `Options`: Ensures the value is within a defined array. ([Example](#options))
 - `ArrayOptions`: Ensures the values (array) is within a defined array. ([Example](#arrayoptions))
 - `Required`: Ensures the value is not blank or `nil`.
@@ -124,4 +129,28 @@ con := constraints.Date{
 
 value := "01-05-2023"
 errs := validator.Validate(value, con)
+```
+
+
+### Custom Validator
+If you want to add your own validator, simply implement the `Constraint` interface and write the `Validate` method to perform the validation.
+
+```go
+package constraints
+
+import "errors"
+
+type GreaterThan100 struct{}
+
+func (c GreaterThan100) Validate(value any) error {
+	num, ok := value.(int)
+	if !ok {
+		return errors.New("this value must be an integer")
+	}
+	if num <= 100 {
+		return errors.New("this value must be greater than 100")
+	}
+	return nil
+}
+
 ```
