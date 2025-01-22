@@ -41,6 +41,7 @@ This package includes several predefined validators:
 - `Required`: Ensures the value is not blank or `nil`.
 - `RegularExpression`: Ensures the value match regular expression. ([Example](#regularexpression))
 - `Date`: Ensures the value is valid date. ([Example](#date))
+- `Url`: Ensures the value is valid url. ([Example](#url))
 
 ## Examples
 
@@ -131,6 +132,17 @@ value := "01-05-2023"
 errs := validator.Validate(value, con)
 ```
 
+### Url
+
+```go
+v := constraints.Url{
+    AllowEmpty:     false,
+    AllowedSchemes: []string{"http", "https"},
+}
+
+value := "https://example.com"
+errs := validator.Validate(value, v)
+```
 
 ### Custom Validator
 If you want to add your own validator, simply implement the `Constraint` interface and write the `Validate` method to perform the validation.
