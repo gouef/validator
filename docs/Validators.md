@@ -157,6 +157,15 @@ value := map[string]int{"a": 1, "b": 2, "c": 3}
 errs := validator.Validate(value, v)
 ```
 
+### Phone number
+
+```go
+v := constraints.PhoneNumber{Format: "(00420) 000 000 000"}
+
+value := "(00420) 123 456 789"
+errs := validator.Validate(value, v)
+```
+
 #### String
 
 ```go
