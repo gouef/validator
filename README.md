@@ -3,10 +3,13 @@
 # Validator
 This package provides tools for validating various types of data in Go using predefined and user-defined validators.
 
+[![Static Badge](https://img.shields.io/badge/Github-gouef%2Fvalidator-blue?style=for-the-badge&logo=github&link=github.com%2Fgouef%2Fvalidator)](https://github.com/gouef/validator)
+
 [![GoDoc](https://pkg.go.dev/badge/github.com/gouef/validator.svg)](https://pkg.go.dev/github.com/gouef/validator)
 [![GitHub stars](https://img.shields.io/github/stars/gouef/validator?style=social)](https://github.com/gouef/validator/stargazers)
 [![Go Report Card](https://goreportcard.com/badge/github.com/gouef/validator)](https://goreportcard.com/report/github.com/gouef/validator)
 [![codecov](https://codecov.io/github/gouef/validator/branch/main/graph/badge.svg?token=YUG8EMH6Q8)](https://codecov.io/github/gouef/validator)
+
 
 ## Versions
 ![Stable Version](https://img.shields.io/github/v/release/gouef/validator?label=Stable&labelColor=green)
