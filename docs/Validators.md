@@ -43,6 +43,8 @@ This package includes several predefined validators:
 - `Date`: Ensures the value is valid date. ([Example](#date))
 - `Url`: Ensures the value is valid url. ([Example](#url))
 - `Length`: Ensure the value has length. ([Example](#length))
+- `Field`: Allow you to validate nested structures, such as `map[string]any`, where each field can have its own constraints. ([Example](#field))
+- `Composite`: Allow you to combine multiple constraints into one, symplifying validation logic when a single field needs to meet multiple criteria. ([Example](#composite))
 
 ## Examples
 
@@ -175,6 +177,49 @@ v := constraints.Url{
 
 value := "hello"
 errs := validator.Validate(value, v)
+```
+
+### Field
+
+```go
+nestedValidator := constraints.Field{
+    Constraints: map[string]validator.Constraint{
+        "Name":  constraints.NotBlank{},
+        "Email": constraints.Email{},
+        "Address": constraints.Field{
+            Constraints: map[string]validator.Constraint{
+                "City":    constraints.NotBlank{},
+                "Country": constraints.NotBlank{},
+            },
+        },
+    },
+}
+
+errs := validator.Validate(value, nestedValidator)
+```
+
+### Composite
+
+```go
+nestedValidator := constraints.Field{
+    Constraints: map[string]validator.Constraint{
+        "Email": constraints.Composite{
+            Constraints: []validator.Constraint{
+                constraints.NotBlank{},
+                constraints.Length{Min: 5, Max: 50},
+                constraints.Email{},
+            },
+        },
+        "Name": constraints.Composite{
+            Constraints: []validator.Constraint{
+                constraints.NotBlank{},
+                constraints.Length{Min: 3, Max: 100},
+            },
+        },
+    },
+}
+
+errs := validator.Validate(value, nestedValidator)
 ```
 
 ### Custom Validator
