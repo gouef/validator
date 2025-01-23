@@ -1,5 +1,7 @@
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/gouef/country v1.0.0 h1:L7E3XnPsbleBYzXGtZzt2CpPHavTaQNKYJuJnA8eGaw=
+github.com/gouef/country v1.0.0/go.mod h1:mH75QaaOr9yMKeH0NVYumiRsqF7/48VJgbudKQG7VsM=
 github.com/gouef/currency v1.0.0 h1:cLSPtM4BP0DBR9tEDrUfR9WPS4hZzA5PohRioi5yN6Y=
 github.com/gouef/currency v1.0.0/go.mod h1:v6aq/1jjBdnKoMhLqEJ5KyaInCKeSvqPldiuSdJNjnA=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=

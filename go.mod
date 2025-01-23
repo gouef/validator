@@ -5,6 +5,7 @@ go 1.23.4
 replace github.com/gouef/validator/constraints => ./constraints
 
 require (
+	github.com/gouef/country v1.0.0
 	github.com/gouef/currency v1.0.0
 	github.com/stretchr/testify v1.10.0
 	golang.org/x/text v0.21.0
