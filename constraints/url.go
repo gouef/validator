@@ -11,6 +11,17 @@ type Url struct {
 	AllowedSchemes []string
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	v := constraints.Url{
+//		AllowEmpty:     false,
+//		AllowedSchemes: []string{"http", "https"},
+//	}
+//
+//	value := "https://example.com"
+//	errs := validator.Validate(value, v)
 func (c Url) Validate(value any) error {
 	if value == nil {
 		if c.AllowEmpty {

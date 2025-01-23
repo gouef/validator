@@ -8,6 +8,13 @@ import (
 
 type Currency struct{}
 
+// Validate function for validate value
+//
+// Example:
+//
+//	con := constraints.Currency{}
+//	value := "USD"
+//	errs := validator.Validate(value, con)
 func (c Currency) Validate(value any) error {
 	str, ok := value.(string)
 	if !ok {

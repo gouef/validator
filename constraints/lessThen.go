@@ -9,6 +9,14 @@ type LessThen struct {
 	Value float64
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	con := constraints.LessThen{
+//		Value: 35
+//	}
+//	errs := validator.Validate(value, con)
 func (r LessThen) Validate(value any) error {
 	var num float64
 

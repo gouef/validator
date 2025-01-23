@@ -9,6 +9,15 @@ type RegularExpression struct {
 	Regexp string
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	regExp := `^[a-z]{3}$`
+//	con := constraints.RegularExpression{
+//		Regexp: regExp,
+//	}
+//	errs := validator.Validate(value, con)
 func (c RegularExpression) Validate(value any) error {
 	str, ok := value.(string)
 	if !ok {

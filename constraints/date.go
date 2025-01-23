@@ -13,6 +13,23 @@ type Date struct {
 	AllowNil bool
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	dateFormat := "2006-01-02"
+//	minDate, _ := time.Parse(dateFormat, "2023-01-01")
+//	maxDate, _ := time.Parse(dateFormat, "2023-12-31")
+//
+//	con := constraints.Date{
+//		Min:    minDate,
+//		Max:    maxDate,
+//		Format: dateFormat,
+//	}
+//
+//	value := "01-05-2023"
+//
+//	errs := validator.Validate(value, con)
 func (c Date) Validate(value any) error {
 	if value == nil {
 		if c.AllowNil {

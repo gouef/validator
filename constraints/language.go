@@ -11,6 +11,11 @@ type LanguageWithRegion struct{}
 
 type Language struct{}
 
+// Validate function for validate value
+//
+//	con := constraints.Language{}
+//	value := "en-US"
+//	errs := validator.Validate(value, con)
 func (c LanguageWithRegion) Validate(value any) error {
 	str, ok := value.(string)
 	if !ok {
@@ -37,6 +42,13 @@ func (c LanguageWithRegion) Validate(value any) error {
 	return nil
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	con := constraints.Language{}
+//	value := "en"
+//	errs := validator.Validate(value, con)
 func (c Language) Validate(value any) error {
 	str, ok := value.(string)
 	if !ok {

@@ -10,6 +10,17 @@ type ArrayRange struct {
 	Max float64
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	con := constrains.ArrayRange{
+//		Min: 5,
+//		Max: 20,
+//	}
+//
+//	value := []any{5, 15, 19}
+//	errs := validator.Validate(value, con)
 func (c ArrayRange) Validate(value any) error {
 	slice, ok := value.([]any)
 	if !ok {

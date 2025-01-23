@@ -12,6 +12,12 @@ type Struct struct {
 	Struct interface{}
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	con := constraints.IsStruct{}
+//	errs := validator.Validate(value, con)
 func (c IsStruct) Validate(value any) error {
 	v := reflect.ValueOf(value)
 	if v.Kind() != reflect.Struct {
@@ -21,6 +27,15 @@ func (c IsStruct) Validate(value any) error {
 	return nil
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	con := constraints.Struct{
+//		Struct: MyStruct{},
+//	}
+//
+// errs := validator.Validate(value, con)
 func (c Struct) Validate(value any) error {
 	v := reflect.ValueOf(value)
 	if v.Kind() != reflect.Struct {

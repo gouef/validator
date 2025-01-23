@@ -7,6 +7,12 @@ import (
 
 type Email struct{}
 
+// Validate function for validate value
+//
+// Example:
+//
+//	con := constraints.Email{}
+//	errs := validator.Validate(value, con)
 func (c Email) Validate(value any) error {
 	str, ok := value.(string)
 	if !ok {

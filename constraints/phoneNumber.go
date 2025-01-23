@@ -28,6 +28,14 @@ func formatToRegex(format string) string {
 	return "^" + regex.String() + "$"
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	con := constraints.PhoneNumber{Format: "(00420) 000 000 000"}
+//
+//	value := "(00420) 123 456 789"
+//	errs := validator.Validate(value, v)
 func (c PhoneNumber) Validate(value any) error {
 	if value == nil {
 		if c.AllowEmpty {

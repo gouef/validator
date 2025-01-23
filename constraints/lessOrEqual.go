@@ -9,6 +9,14 @@ type LessOrEqual struct {
 	Value float64
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	con := constraints.LessOrEqual{
+//		Value: 35
+//	}
+//	errs := validator.Validate(value, con)
 func (r LessOrEqual) Validate(value any) error {
 	var num float64
 

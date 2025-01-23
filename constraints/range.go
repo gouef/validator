@@ -10,6 +10,17 @@ type Range struct {
 	Max float64
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	con := constrains.Range{
+//		Min: 5,
+//		Max: 20,
+//	}
+//
+//	value := 7
+//	errs := validator.Validate(value, con)
 func (r Range) Validate(value any) error {
 	var num float64
 

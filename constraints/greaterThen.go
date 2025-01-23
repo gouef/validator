@@ -9,6 +9,14 @@ type GreaterThen struct {
 	Value float64
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	con := constraints.GreaterThen{
+//		Value: 35
+//	}
+//	errs := validator.Validate(value, con)
 func (r GreaterThen) Validate(value any) error {
 	var num float64
 

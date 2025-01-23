@@ -10,6 +10,24 @@ type Field struct {
 	Constraints map[string]validator.Constraint
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	con := constraints.Field{
+//	   Constraints: map[string]validator.Constraint{
+//	       "Name":  constraints.NotBlank{},
+//	       "Email": constraints.Email{},
+//	       "Address": constraints.Field{
+//	           Constraints: map[string]validator.Constraint{
+//	               "City":    constraints.NotBlank{},
+//	               "Country": constraints.NotBlank{},
+//	           },
+//	       },
+//	   },
+//	}
+//
+// errs := validator.Validate(value, nestedValidator)
 func (n Field) Validate(value any) error {
 	nestedValue, ok := value.(map[string]any)
 	if !ok {

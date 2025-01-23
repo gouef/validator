@@ -9,6 +9,14 @@ type GreaterOrEqual struct {
 	Value float64
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	con := constraints.GreaterOrEqual{
+//		Value: 35
+//	}
+//	errs := validator.Validate(value, con)
 func (r GreaterOrEqual) Validate(value any) error {
 	var num float64
 

@@ -11,6 +11,25 @@ type Length struct {
 	Max int
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//	con := constraints.Length{
+//		Max: 4,
+//	}
+//
+//	value := map[string]int{"a": 1, "b": 2, "c": 3}
+//	errs := validator.Validate(value, v)
+//
+//	 // Example 2
+//
+//	con := constraints.Length{
+//		Min: 4,
+//	}
+//
+//	value := "hello"
+//	errs := validator.Validate(value, v)
 func (c Length) Validate(value any) error {
 	if value == nil {
 		return errors.New("this value is required and cannot be nil")

@@ -52,7 +52,7 @@ func main() {
 	}
 
 	// Example validation for a value within a range
-	rangeValidator := constraints.RangeConstraint{Min: 10, Max: 100}
+	rangeValidator := constraints.Range{Min: 10, Max: 100}
 	errs = validator.Validate(50, rangeValidator)
 
 	if len(errs) > 0 {

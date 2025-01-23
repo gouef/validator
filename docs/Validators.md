@@ -42,6 +42,7 @@ This package includes several predefined validators:
 - `RegularExpression`: Ensures the value match regular expression. ([Example](#regularexpression))
 - `Date`: Ensures the value is valid date. ([Example](#date))
 - `Url`: Ensures the value is valid url. ([Example](#url))
+- `PhoneNumber`: Ensures the value is valid phone number (with option format). ([Example](#phoneNumber))
 - `Length`: Ensure the value has length. ([Example](#length))
 - `Field`: Allow you to validate nested structures, such as `map[string]any`, where each field can have its own constraints. ([Example](#field))
 - `Composite`: Allow you to combine multiple constraints into one, symplifying validation logic when a single field needs to meet multiple criteria. ([Example](#composite))
@@ -151,7 +152,7 @@ errs := validator.Validate(value, v)
 
 #### Map
 ```go
-v := constraints.Url{
+v := constraints.Length{
     Max: 4,
 }
 
@@ -159,23 +160,21 @@ value := map[string]int{"a": 1, "b": 2, "c": 3}
 errs := validator.Validate(value, v)
 ```
 
+#### String
+```go
+v := constraints.Length{
+    Max: 4,
+}
+
+value := "hello"
+errs := validator.Validate(value, v)
+
 ### Phone number
 
 ```go
 v := constraints.PhoneNumber{Format: "(00420) 000 000 000"}
 
 value := "(00420) 123 456 789"
-errs := validator.Validate(value, v)
-```
-
-#### String
-
-```go
-v := constraints.Url{
-    Min: 3,
-}
-
-value := "hello"
 errs := validator.Validate(value, v)
 ```
 
