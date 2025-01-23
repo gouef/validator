@@ -46,6 +46,7 @@ This package includes several predefined validators:
 - `Length`: Ensure the value has length. ([Example](#length))
 - `Field`: Allow you to validate nested structures, such as `map[string]any`, where each field can have its own constraints. ([Example](#field))
 - `Composite`: Allow you to combine multiple constraints into one, symplifying validation logic when a single field needs to meet multiple criteria. ([Example](#composite))
+- `Country`: Ensures the value is valid (one of name, alpha-2 (2 letters code), alpha-3 (3 letters code)) by [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html).
 
 ## Examples
 
