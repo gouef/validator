@@ -9,6 +9,29 @@ type Composite struct {
 	Constraints []validator.Constraint
 }
 
+// Validate function for validate value
+//
+// Example:
+//
+//		nestedValidator := constraints.Field{
+//		   Constraints: map[string]validator.Constraint{
+//		       "Email": constraints.Composite{
+//		           Constraints: []validator.Constraint{
+//		               constraints.NotBlank{},
+//		               constraints.Length{Min: 5, Max: 50},
+//		               constraints.Email{},
+//		           },
+//		       },
+//		       "Name": constraints.Composite{
+//		           Constraints: []validator.Constraint{
+//		               constraints.NotBlank{},
+//		               constraints.Length{Min: 3, Max: 100},
+//		           },
+//		       },
+//		   },
+//		}
+//
+//	 errs := validator.Validate(value, nestedValidator)
 func (c Composite) Validate(value any) error {
 	var validationErrors []error
 
