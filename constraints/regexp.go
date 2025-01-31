@@ -25,7 +25,7 @@ func (c RegularExpression) Validate(value any) error {
 	}
 
 	if matched, _ := regexp.MatchString(c.Regexp, str); !matched {
-		return errors.New("this value is not a valid email address")
+		return errors.New("this value is not match to regular expression")
 	}
 
 	return nil
