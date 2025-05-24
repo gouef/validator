@@ -36,6 +36,9 @@ This package includes several predefined validators:
 - `GreaterThen`: Ensures the value is greater. (support int, float)
 - `LessOrEqual`: Ensures the value is less or equal. (support int, float)
 - `LessThen`: Ensures the value is less then. (support int, float)
+- `IsEven`: Ensures the value is an even integer.
+- `IsOdd`: Ensures the value is an odd integer.
+- `IsMultipleOf`: Ensures the value is a multiple of a specif
 - `Options`: Ensures the value is within a defined array. ([Example](#options))
 - `ArrayOptions`: Ensures the values (array) is within a defined array. ([Example](#arrayoptions))
 - `Required`: Ensures the value is not blank or `nil`.
@@ -50,6 +53,29 @@ This package includes several predefined validators:
 - `IsIPv4`: Ensures the value is `IP4` address.
 - `IsIPv6`: Ensures the value is `IP6` address.
 - `IsMAC`: Ensures the value is `MAC` address.
+- `IsLowercase`: Ensures the value is entirely lowercase.
+- `IsUppercase`: Ensures the value is entirely uppercase.
+- `IsTitleCase`: Ensures the value starts with an uppercase letter.
+- `IsCamelCase`: Ensures the value follows camelCase format.
+- `IsPascalCase`: Ensures the value follows PascalCase format.
+- `HasPrefix`: Ensures the value starts with a specified prefix.
+- `HasSuffix`: Ensures the value ends with a specified suffix.
+- `Contains`: Ensures the value contains a specified substring.
+- `IsBase32`: Ensures the value is a valid Base32-encoded string.
+- `IsBase64`: Ensures the value is a valid Base64-encoded string.
+- `IsSHA256`: Ensures the value is a valid SHA-256 hash (64 hex characters).
+- `IsHexColor`: Ensures the value is a valid hex color (e.g. #fff or #ffffff).
+- `IsHSLColor`: Ensures the value is a valid HSL/HSLA color.
+- `IsRGBColor`: Ensures the value is a valid RGB/RGBA color.
+- `IsHex`: Ensures the value is a valid hexadecimal string.
+- `IsJSON`: Ensures the value is a valid JSON string.
+- `IsJWT`: Ensures the value is a valid JWT token (three base64 segments).
+- `IsUUIDv1`: Ensures the value is a valid UUID version 1.
+- `IsUUIDv3`: Ensures the value is a valid UUID version 3.
+- `IsUUIDv4`: Ensures the value is a valid UUID version 4.
+- `IsUUIDv5`: Ensures the value is a valid UUID version 5.
+- `IsUUID`: Ensures the value is a valid UUID (optionally of a specific version).
+- `Custom`: Custom constraint with user-defined validation logic ([Example](#custom)).
 
 ## Examples
 
@@ -223,6 +249,33 @@ nestedValidator := constraints.Field{
 }
 
 errs := validator.Validate(value, nestedValidator)
+```
+
+### Custom
+
+```go
+con := constraints.Custom{
+	Fn: func(value any) error {
+		s, ok := value.(string)
+		if !ok {
+			return errors.New("value must be a string")
+		}
+		if len(s) < 5 {
+			return errors.New("string must be at least 5 characters long")
+		}
+		return nil
+	},
+}
+
+value := "abc"
+
+errs := validator.Validate(value, con)
+
+if len(errs) > 0 {
+	for _, err := range errs {
+		fmt.Println("Validation error:", err)
+	}
+}
 ```
 
 ### Custom Validator
