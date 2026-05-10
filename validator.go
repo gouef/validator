@@ -12,3 +12,7 @@ func Validate(value any, constraints ...Constraint) []error {
 	}
 	return errs
 }
+
+func ValidateOk(value any, constraints ...Constraint) bool {
+	return len(Validate(value, constraints...)) == 0
+}

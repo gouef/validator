@@ -51,6 +51,10 @@ func main() {
 		fmt.Println("Email is valid.")
 	}
 
+	// Or if you need just bool (is ok or not)
+
+	errs := validator.ValidateOk("example@example.com", emailValidator) // returns true/false
+
 	// Example validation for a value within a range
 	rangeValidator := constraints.Range{Min: 10, Max: 100}
 	errs = validator.Validate(50, rangeValidator)
